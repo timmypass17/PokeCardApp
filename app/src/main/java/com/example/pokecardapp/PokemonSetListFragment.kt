@@ -24,5 +24,7 @@ class PokemonSetListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.getSetsData()
+
+        // bannana
     }
 }
