@@ -1,0 +1,22 @@
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/pokemonListFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="Collection"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/pokemonSetListFragment"
+        android:enabled="true"
+        android:icon="@android:drawable/btn_star"
+        android:title="Set"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/pokemonSearchFragment"
+        android:enabled="true"
+        android:icon="@drawable/ic_search"
+        android:title="Search"
+        app:showAsAction="always" />
+</menu>
