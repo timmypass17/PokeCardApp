@@ -22,10 +22,30 @@
         <action
             android:id="@+id/action_pokemonSetListFragment_to_pokemonSearchFragment"
             app:destination="@id/pokemonSearchFragment" />
+        <action
+            android:id="@+id/action_pokemonSetListFragment_to_pokemonSetDetailFragment"
+            app:destination="@id/pokemonSetDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/pokemonSearchFragment"
         android:name="com.example.pokecardapp.PokemonSearchFragment"
         android:label="fragment_pokemon_search"
         tools:layout="@layout/fragment_pokemon_search" />
+    <fragment
+        android:id="@+id/pokemonSetDetailFragment"
+        android:name="com.example.pokecardapp.PokemonSetDetailFragment"
+        android:label="fragment_pokemon_set_detail"
+        tools:layout="@layout/fragment_pokemon_set_detail" >
+        <argument
+            android:name="set_id"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_pokemonSetDetailFragment_to_cardFragment"
+            app:destination="@id/cardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cardFragment"
+        android:name="com.example.pokecardapp.CardFragment"
+        android:label="fragment_card"
+        tools:layout="@layout/fragment_card" />
 </navigation>

@@ -6,6 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.pokecardapp.data.pokemon.Pokemon
 import com.example.pokecardapp.data.pokeset.PokemonSet
 import com.example.pokecardapp.data.pokeset.PokemonSetResponse
 import com.example.pokecardapp.network.PokemonApi
@@ -16,6 +17,9 @@ enum class PokemonApiStatus { LOADING, ERROR, DONE }
 /**
  * The [ViewModel] that is attached to the [PokemonSetListFragment].
  */
+
+private const val TAG = "SetViewModel"
+
 class SetViewModel : ViewModel() {
 
     private val _status = MutableLiveData<PokemonApiStatus>()
@@ -24,11 +28,14 @@ class SetViewModel : ViewModel() {
     private val _pokemonSets = MutableLiveData<List<PokemonSet>>()
     val pokemonSets: LiveData<List<PokemonSet>> = _pokemonSets
 
+    private val _pokemons = MutableLiveData<List<Pokemon>>()
+    val pokemons: LiveData<List<Pokemon>> = _pokemons
+
     init {
         getSetsData() // populate viewmodel with retrofit data
     }
 
-    fun getSetsData() {
+    private fun getSetsData() {
         try {
             viewModelScope.launch {
                 _pokemonSets.value = PokemonApi.retrofitService.getSets().data // pass in List<pokeset>
@@ -38,4 +45,5 @@ class SetViewModel : ViewModel() {
             _status.value = PokemonApiStatus.ERROR
         }
     }
+
 }

@@ -11,5 +11,5 @@ data class PokemonSet(
 )
 
 data class PokeSetImage (
-    val symbol: String
+    val logo: String
 )

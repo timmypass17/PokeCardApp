@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.pokecardapp.adapter.PokemonSetAdapter
 import com.example.pokecardapp.databinding.FragmentPokemonSetListBinding
 import com.example.pokecardapp.viewmodels.SetViewModel
@@ -24,10 +26,17 @@ class PokemonSetListFragment : Fragment() {
         binding.lifecycleOwner = this
 
         // Giving the binding access to the OverviewViewModel
-        binding.viewModel = viewModel // first ime use viewmodel, calls init()
+        binding.viewModel = viewModel // first time use viewmodel, calls init()
 
         // Initialize the RecyclerView adapter in rvPokemonSets to a new PhotoGridAdapter object
-        binding.rvPokemonSets.adapter = PokemonSetAdapter()
+        val adapter = PokemonSetAdapter { pokemonSet ->
+            val action =
+                PokemonSetListFragmentDirections.actionPokemonSetListFragmentToPokemonSetDetailFragment(
+                    setId = pokemonSet.id
+                )
+            findNavController().navigate(action)
+        }
+        binding.rvPokemonSets.adapter = adapter
 
         return binding.root
     }
