@@ -6,6 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.pokecardapp.data.pokeset.PokemonSet
+import com.example.pokecardapp.data.pokeset.PokemonSetResponse
 import com.example.pokecardapp.network.PokemonApi
 import kotlinx.coroutines.launch
 
@@ -16,25 +18,24 @@ enum class PokemonApiStatus { LOADING, ERROR, DONE }
  */
 class SetViewModel : ViewModel() {
 
-    // The internal MutableLiveData that stores the status of the most recent request
     private val _status = MutableLiveData<PokemonApiStatus>()
-    // The external immutable LiveData for the request status
     val status: LiveData<PokemonApiStatus> = _status
 
+    private val _pokemonSets = MutableLiveData<List<PokemonSet>>()
+    val pokemonSets: LiveData<List<PokemonSet>> = _pokemonSets
+
     init {
-        getSetsData()
+        getSetsData() // populate viewmodel with retrofit data
     }
 
     fun getSetsData() {
         try {
             viewModelScope.launch {
-                val listResult = PokemonApi.retrofitService.getSets()
+                _pokemonSets.value = PokemonApi.retrofitService.getSets().data // pass in List<pokeset>
                 _status.value = PokemonApiStatus.DONE
-                Log.i("ViewModel", "OnSucess: $listResult")
             }
         } catch (e: Exception) {
             _status.value = PokemonApiStatus.ERROR
-            Log.i("ViewModel", "Error")
         }
     }
 }
