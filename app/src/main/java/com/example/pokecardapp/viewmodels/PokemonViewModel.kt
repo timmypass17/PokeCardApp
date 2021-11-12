@@ -8,16 +8,12 @@ import kotlinx.coroutines.launch
 
 private const val TAG = "PokemonViewModel"
 
-class PokemonViewModel(private val id: String) : ViewModel() {
+class PokemonViewModel : ViewModel() {
 
     private val _pokemons = MutableLiveData<List<Pokemon>>()
     val pokemons: LiveData<List<Pokemon>> = _pokemons
 
-    init {
-        getCardsFromSet(id) // initialize viewmodel with pokemon data from set
-    }
-
-    private fun getCardsFromSet(id: String) {
+    fun getCardsFromSet(id: String) {
         try {
             viewModelScope.launch {
                 _pokemons.value = PokemonApi.retrofitService.getCardsFromSet(id).data
@@ -26,21 +22,22 @@ class PokemonViewModel(private val id: String) : ViewModel() {
                 Log.i(TAG, "onSuccess, id: $id")
             }
         } catch (e: Exception) {
-            Log.i(TAG, "onFailure, from gettings cards from set")
+            Log.i(TAG, "onFailure, from getting cards from set")
         }
     }
 }
 
+// TODO: pass in dao
 /**
  * Creates the PokemonViewModel instance
  * @param = Set ID, to get data from that set
  */
-class PokemonViewModelFactory(private val id: String) : ViewModelProvider.Factory {
-    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(PokemonViewModel::class.java)) {
-            @Suppress("UNCHECKED_CAST")
-            return PokemonViewModel(id) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
-    }
-}
+//class PokemonViewModelFactory(private val id: String) : ViewModelProvider.Factory {
+//    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+//        if (modelClass.isAssignableFrom(PokemonViewModel::class.java)) {
+//            @Suppress("UNCHECKED_CAST")
+//            return PokemonViewModel(id) as T
+//        }
+//        throw IllegalArgumentException("Unknown ViewModel class")
+//    }
+//}

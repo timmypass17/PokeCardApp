@@ -47,5 +47,9 @@
         android:id="@+id/cardFragment"
         android:name="com.example.pokecardapp.CardFragment"
         android:label="fragment_card"
-        tools:layout="@layout/fragment_card" />
+        tools:layout="@layout/fragment_card" >
+        <argument
+            android:name="pokemon"
+            app:argType="com.example.pokecardapp.data.pokemon.Pokemon" />
+    </fragment>
 </navigation>
