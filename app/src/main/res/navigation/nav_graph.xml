@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_pokemonListFragment_to_pokemonSetListFragment"
             app:destination="@id/pokemonSetListFragment" />
+        <action
+            android:id="@+id/action_pokemonListFragment_to_cardFragment"
+            app:destination="@id/cardFragment" />
     </fragment>
     <fragment
         android:id="@+id/pokemonSetListFragment"

@@ -18,7 +18,7 @@
             android:id="@+id/rvCards"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:cardsListData="@{viewModel.pokemons}"
+            app:setDetailListData="@{viewModel.pokemons}"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
