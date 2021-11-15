@@ -30,7 +30,6 @@ class CardListAdapter(private val onItemClicked: (Card) -> Unit) :
             binding.card = card
             binding.executePendingBindings()
         }
-
     }
 
     companion object DiffCallback : DiffUtil.ItemCallback<Card>() {

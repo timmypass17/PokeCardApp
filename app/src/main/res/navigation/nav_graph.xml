@@ -8,11 +8,11 @@
     <fragment
         android:id="@+id/pokemonListFragment"
         android:name="com.example.pokecardapp.PokemonListFragment"
-        android:label="fragment_pokemon_list"
-        tools:layout="@layout/fragment_pokemon_list" >
-        <action
-            android:id="@+id/action_pokemonListFragment_to_pokemonSetListFragment"
-            app:destination="@id/pokemonSetListFragment" />
+        android:label="All Cards"
+        tools:layout="@layout/fragment_pokemon_list">
+<!--        <action-->
+<!--            android:id="@+id/action_pokemonListFragment_to_pokemonSetListFragment"-->
+<!--            app:destination="@id/pokemonSetListFragment" />-->
         <action
             android:id="@+id/action_pokemonListFragment_to_cardFragment"
             app:destination="@id/cardFragment" />
@@ -20,11 +20,11 @@
     <fragment
         android:id="@+id/pokemonSetListFragment"
         android:name="com.example.pokecardapp.PokemonSetListFragment"
-        android:label="fragment_pokemon_set_list"
-        tools:layout="@layout/fragment_pokemon_set_list" >
-        <action
-            android:id="@+id/action_pokemonSetListFragment_to_pokemonSearchFragment"
-            app:destination="@id/pokemonSearchFragment" />
+        android:label="All Sets"
+        tools:layout="@layout/fragment_pokemon_set_list">
+<!--        <action-->
+<!--            android:id="@+id/action_pokemonSetListFragment_to_pokemonSearchFragment"-->
+<!--            app:destination="@id/pokemonSearchFragment" />-->
         <action
             android:id="@+id/action_pokemonSetListFragment_to_pokemonSetDetailFragment"
             app:destination="@id/pokemonSetDetailFragment" />
@@ -49,10 +49,13 @@
     <fragment
         android:id="@+id/cardFragment"
         android:name="com.example.pokecardapp.CardFragment"
-        android:label="fragment_card"
-        tools:layout="@layout/fragment_card" >
+        android:label="{name}"
+        tools:layout="@layout/fragment_card">
         <argument
             android:name="pokemon"
             app:argType="com.example.pokecardapp.data.pokemon.Pokemon" />
+        <argument
+            android:name="name"
+            app:argType="string" />
     </fragment>
 </navigation>

@@ -16,20 +16,22 @@
         <ImageView
             android:id="@+id/ivCard"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
+            android:adjustViewBounds="true"
+            app:imageUrl="@{card.cardImage}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/pokemon_card_sample"
-            app:imageUrl="@{card.cardImage}"/>
+            app:srcCompat="@drawable/pokemon_card_sample" />
 
         <TextView
             android:id="@+id/tvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="@+id/ivCard"
-            app:layout_constraintStart_toStartOf="@+id/ivCard"
-            app:layout_constraintTop_toBottomOf="@+id/ivCard"
-            tools:text="Celebi"
-            android:text="@{card.cardName}"/>
+            android:layout_marginStart="8dp"
+            android:text="@{card.cardName}"
+            app:layout_constraintBottom_toBottomOf="@+id/ivCard"
+            app:layout_constraintStart_toEndOf="@+id/ivCard"
+            app:layout_constraintTop_toTopOf="@+id/ivCard"
+            tools:text="Celebi" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -29,7 +29,8 @@ class PokemonSetDetailFragment : Fragment() {
         val adapter = PokemonAdapter { pokemon ->
             val action =
                 PokemonSetDetailFragmentDirections.actionPokemonSetDetailFragmentToCardFragment(
-                    pokemon = pokemon
+                    pokemon = pokemon,
+                    name = pokemon.name
                 )
             // pass in custom object or add each name, id, etc manually
             findNavController().navigate(action)

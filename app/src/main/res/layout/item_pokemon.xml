@@ -15,8 +15,9 @@
         <ImageView
             android:id="@+id/ivCard"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/pokemon_card_sample"
-            app:imageUrl="@{pokemon.images.small}"/>
+            android:layout_height="200dp"
+            android:adjustViewBounds="true"
+            app:imageUrl="@{pokemon.images.small}"
+            app:srcCompat="@drawable/pokemon_card_sample" />
     </com.google.android.material.card.MaterialCardView>
 </layout>

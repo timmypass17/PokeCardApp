@@ -17,4 +17,7 @@ interface CardDao {
 
     @Query("SELECT * from cards ORDER BY name ASC")
     fun getCards(): Flow<List<Card>>
+
+    @Query("SELECT EXISTS(SELECT * FROM cards WHERE id = :id)")
+    fun isOwned(id: String): Boolean
 }

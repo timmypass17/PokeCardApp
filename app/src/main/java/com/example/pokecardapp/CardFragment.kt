@@ -13,6 +13,7 @@ import com.example.pokecardapp.data.CardApplication
 import com.example.pokecardapp.databinding.FragmentCardBinding
 import com.example.pokecardapp.viewmodels.CardViewModel
 import com.example.pokecardapp.viewmodels.CardViewModelFactory
+import kotlinx.android.synthetic.main.fragment_card.*
 
 class CardFragment : Fragment() {
 
@@ -26,10 +27,7 @@ class CardFragment : Fragment() {
     }
     private val navigationArgs: CardFragmentArgs by navArgs()
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         _binding = FragmentCardBinding.inflate(inflater)
         return binding.root
@@ -50,11 +48,22 @@ class CardFragment : Fragment() {
             cardName = pokemon.name,
             cardImage = pokemon.images.large)
 
-        bindImage(binding.ivCard, pokemon.images.large)
-        binding.btnAdd.setOnClickListener { addCard(card) }
+        binding.apply {
+            lifecycleOwner = viewLifecycleOwner
+            viewModel = viewModel
+            binding.card = card
+
+            btnAdd.setOnClickListener { addCard(card) }
+            btnDelete.setOnClickListener { deleteCard(card) }
+        }
+
     }
 
     private fun addCard(card: Card) {
         viewModel.addCard(card)
+    }
+
+    private fun deleteCard(card: Card) {
+        viewModel.deleteCard(card)
     }
 }

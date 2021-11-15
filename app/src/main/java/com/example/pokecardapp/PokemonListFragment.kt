@@ -36,7 +36,8 @@ class PokemonListFragment : Fragment() {
             val pokemon = Pokemon(id = card.id, name = card.cardName, images = pokemonImage)
             val action =
                 PokemonListFragmentDirections.actionPokemonListFragmentToCardFragment(
-                    pokemon = pokemon
+                    pokemon = pokemon,
+                    name = pokemon.name
                 )
             findNavController().navigate(action)
         }

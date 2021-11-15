@@ -16,6 +16,12 @@ class CardViewModel(private val cardDao: CardDao) : ViewModel() {
             cardDao.insert(card)
         }
     }
+
+    fun deleteCard(card: Card) {
+        viewModelScope.launch {
+            cardDao.delete(card)
+        }
+    }
 }
 
 /**

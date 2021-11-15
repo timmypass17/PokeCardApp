@@ -4,7 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.example.pokecardapp.viewmodels.CardViewModel" />
+        <variable
+            name="card"
+            type="com.example.pokecardapp.data.Card" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,7 +28,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@drawable/pokemon_card_sample" />
+            tools:srcCompat="@drawable/pokemon_card_sample"
+            app:imageUrl="@{card.cardImage}"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAdd"
@@ -34,6 +40,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivCard" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Delete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnAdd" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
