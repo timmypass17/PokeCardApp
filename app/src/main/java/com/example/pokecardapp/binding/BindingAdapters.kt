@@ -1,6 +1,8 @@
 package com.example.pokecardapp.binding
 
+import android.view.View
 import android.widget.ImageView
+import android.widget.ProgressBar
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -12,6 +14,7 @@ import com.example.pokecardapp.adapter.PokemonSetAdapter
 import com.example.pokecardapp.data.Card
 import com.example.pokecardapp.data.pokemon.Pokemon
 import com.example.pokecardapp.data.pokeset.PokemonSet
+import com.example.pokecardapp.viewmodels.PokemonApiStatus
 
 
 @BindingAdapter("imageUrl")
@@ -19,11 +22,44 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
         val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
         imgView.load(imgUri) {
-//            placeholder(R.drawable.loading_animation)
-//            error(R.drawable.ic_broken_image)
+            placeholder(R.drawable.ic_default_icon)
+            error(R.drawable.ic_no_wifi)
         }
     }
 }
+
+@BindingAdapter("progressBarStatus")
+fun bindProgressBar(progressBar: ProgressBar, status: PokemonApiStatus?) {
+        when (status) {
+        PokemonApiStatus.LOADING -> {
+            progressBar.visibility = View.VISIBLE
+        }
+        PokemonApiStatus.ERROR -> {
+            progressBar.visibility = View.GONE
+        }
+        PokemonApiStatus.DONE -> {
+            progressBar.visibility = View.GONE
+        }
+    }
+}
+
+//@BindingAdapter("setApiStatus")
+//fun bindSetStatus(statusImageView: ImageView,
+//               status: PokemonApiStatus?) {
+//    when (status) {
+//        PokemonApiStatus.LOADING -> {
+//            statusImageView.visibility = View.VISIBLE
+//            statusImageView.setImageResource(R.drawable.ic_default_icon)
+//        }
+//        PokemonApiStatus.ERROR -> {
+//            statusImageView.visibility = View.VISIBLE
+//            statusImageView.setImageResource(R.drawable.ic_default_icon)
+//        }
+//        PokemonApiStatus.DONE -> {
+//            statusImageView.visibility = View.GONE
+//        }
+//    }
+//}
 
 /**
  * Using a BindingAdapter to set the RecyclerView data causes data binding to automatically

@@ -42,7 +42,7 @@ class PokemonListFragment : Fragment() {
             findNavController().navigate(action)
         }
 
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
         binding.rvCards.adapter = adapter
 

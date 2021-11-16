@@ -23,7 +23,7 @@ class PokemonSetListFragment : Fragment() {
         val binding = FragmentPokemonSetListBinding.inflate(inflater)
 
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
 
         // Giving the binding access to the OverviewViewModel
         binding.viewModel = viewModel // first time use viewmodel, calls init()
@@ -32,7 +32,8 @@ class PokemonSetListFragment : Fragment() {
         val adapter = PokemonSetAdapter { pokemonSet ->
             val action =
                 PokemonSetListFragmentDirections.actionPokemonSetListFragmentToPokemonSetDetailFragment(
-                    setId = pokemonSet.id
+                    setId = pokemonSet.id,
+                    setName = pokemonSet.name
                 )
             findNavController().navigate(action)
         }

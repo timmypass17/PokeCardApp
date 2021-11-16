@@ -14,6 +14,16 @@
         android:layout_height="match_parent"
         tools:context=".PokemonSetDetailFragment">
 
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progressBar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:progressBarStatus="@{viewModel.status}" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCards"
             android:layout_width="match_parent"

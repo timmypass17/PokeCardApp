@@ -10,4 +10,9 @@
 
     <color name="night">#171a21</color>
     <color name="night_dark">#121419</color>
+
+    <color name="white_dark">#e6e6e6</color>
+    <color name="sky_blue">#dae2ed</color>
+
+    <color name="pink">#e03896</color>
 </resources>

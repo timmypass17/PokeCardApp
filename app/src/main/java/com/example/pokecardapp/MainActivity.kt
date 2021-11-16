@@ -2,6 +2,7 @@ package com.example.pokecardapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
@@ -23,8 +24,11 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
         navController = navHost.navController
 
+        val drawerLayout = findViewById<DrawerLayout>(R.id.drawer_layout)
         // Set multiple top level to remove extra back button. https://developer.android.com/guide/navigation/navigation-ui#appbarconfiguration
-        appBarConfiguration = AppBarConfiguration(setOf(R.id.pokemonListFragment, R.id.pokemonSetListFragment, R.id.pokemonSearchFragment))
+        appBarConfiguration = AppBarConfiguration(
+            topLevelDestinationIds = setOf(R.id.pokemonListFragment, R.id.pokemonSetListFragment, R.id.pokemonSearchFragment),
+            drawerLayout = drawerLayout)
 
         setupActionBarWithNavController(navController, appBarConfiguration) // shows actionbar (back button)
         setupBottomNavMenu(navController) // bottom nav

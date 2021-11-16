@@ -36,12 +36,14 @@ class SetViewModel : ViewModel() {
     }
 
     private fun getSetsData() {
+        _status.value = PokemonApiStatus.LOADING
         try {
             viewModelScope.launch {
                 _pokemonSets.value = PokemonApi.retrofitService.getSets().data // pass in List<pokeset>
                 _status.value = PokemonApiStatus.DONE
             }
         } catch (e: Exception) {
+            _pokemonSets.value = listOf()   // set list to empty if we failed to get data
             _status.value = PokemonApiStatus.ERROR
         }
     }

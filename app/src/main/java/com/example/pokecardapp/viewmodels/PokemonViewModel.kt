@@ -10,19 +10,22 @@ private const val TAG = "PokemonViewModel"
 
 class PokemonViewModel : ViewModel() {
 
+    private val _status = MutableLiveData<PokemonApiStatus>()
+    val status: LiveData<PokemonApiStatus> = _status
+
     private val _pokemons = MutableLiveData<List<Pokemon>>()
     val pokemons: LiveData<List<Pokemon>> = _pokemons
 
     fun getCardsFromSet(id: String) {
+        _status.value = PokemonApiStatus.LOADING
         try {
             viewModelScope.launch {
                 _pokemons.value = PokemonApi.retrofitService.getCardsFromSet(id).data
-                Log.i(TAG, "onSuccess, data: ${_pokemons.value}")
-                Log.i(TAG, "onSuccess, data: ${_pokemons.value?.size}")
-                Log.i(TAG, "onSuccess, id: $id")
+                _status.value = PokemonApiStatus.DONE
             }
         } catch (e: Exception) {
-            Log.i(TAG, "onFailure, from getting cards from set")
+            _pokemons.value = listOf()
+            _status.value = PokemonApiStatus.ERROR
         }
     }
 }
