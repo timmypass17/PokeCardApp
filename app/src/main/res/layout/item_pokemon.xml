@@ -9,15 +9,16 @@
     </data>
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/ivCard"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             app:imageUrl="@{pokemon.images.small}"
-            app:srcCompat="@drawable/pokemon_card_sample" />
+            app:srcCompat="@drawable/pokemon_card_sample"
+            android:padding="2dp"/>
     </com.google.android.material.card.MaterialCardView>
 </layout>

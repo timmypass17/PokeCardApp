@@ -3,13 +3,18 @@ package com.example.pokecardapp.viewmodels
 import androidx.lifecycle.*
 import com.example.pokecardapp.data.Card
 import com.example.pokecardapp.data.CardDao
+import com.example.pokecardapp.network.PokemonApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
 class CardViewModel(private val cardDao: CardDao) : ViewModel() {
 
-    private val _allCards: Flow<List<Card>> = cardDao.getCards()
+    private val _status = MutableLiveData<PokemonApiStatus>()
+    val status: LiveData<PokemonApiStatus> = _status
+
+    private var _allCards: Flow<List<Card>> = cardDao.getCards()
     val allCards: LiveData<List<Card>> = _allCards.asLiveData()
+
 
     fun addCard(card: Card) {
         viewModelScope.launch {

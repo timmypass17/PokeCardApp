@@ -46,7 +46,9 @@ class CardFragment : Fragment() {
         val card = Card(
             id = pokemon.id,
             cardName = pokemon.name,
-            cardImage = pokemon.images.large)
+            cardImage = pokemon.images.large,
+            updatedAt = pokemon.cardmarket.updatedAt,
+            price = pokemon.cardmarket.prices.averageSellPrice)
 
         binding.apply {
             lifecycleOwner = viewLifecycleOwner

@@ -30,9 +30,43 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="@{card.cardName}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/ivCard"
             app:layout_constraintStart_toEndOf="@+id/ivCard"
             app:layout_constraintTop_toTopOf="@+id/ivCard"
             tools:text="Celebi" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/tvPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:includeFontPadding="false"
+            android:text="@{@string/price(card.price)}"
+            android:textColor="@color/white"
+            app:chipBackgroundColor="@color/green"
+            app:chipCornerRadius="8dp"
+            app:chipEndPadding="2dp"
+            app:chipMinHeight="16dp"
+            app:chipMinTouchTargetSize="0dp"
+            app:chipStartPadding="2dp"
+            app:closeIconEndPadding="0dp"
+            app:closeIconStartPadding="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvName"
+            app:layout_constraintStart_toEndOf="@+id/tvName"
+            app:layout_constraintTop_toTopOf="@+id/tvName"
+            tools:text="$10" />
+
+        <TextView
+            android:id="@+id/tvUpdatedAt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/updated_at(card.updatedAt)}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/tvName"
+            app:layout_constraintTop_toBottomOf="@+id/tvName"
+            tools:text="Updated: 2021/08/04" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

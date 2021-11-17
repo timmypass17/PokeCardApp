@@ -14,11 +14,23 @@ data class PokemonResponse(
 data class Pokemon(
     val id: String,
     val name: String,
-    val images: PokeImage
+    val images: PokeImage,
+    val cardmarket: CardMarket
 ) : Parcelable
 
 @Parcelize
 data class PokeImage(
     val small: String,
     val large: String
+) : Parcelable
+
+@Parcelize
+data class CardMarket(
+    val updatedAt: String,
+    val prices: CardPrice
+) : Parcelable
+
+@Parcelize
+data class CardPrice(
+    val averageSellPrice: String
 ) : Parcelable

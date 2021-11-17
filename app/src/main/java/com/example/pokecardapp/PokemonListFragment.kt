@@ -9,6 +9,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.pokecardapp.adapter.CardListAdapter
 import com.example.pokecardapp.data.CardApplication
+import com.example.pokecardapp.data.pokemon.CardMarket
+import com.example.pokecardapp.data.pokemon.CardPrice
 import com.example.pokecardapp.data.pokemon.PokeImage
 import com.example.pokecardapp.data.pokemon.Pokemon
 import com.example.pokecardapp.databinding.FragmentPokemonListBinding
@@ -33,7 +35,14 @@ class PokemonListFragment : Fragment() {
         val adapter = CardListAdapter { card ->
             // Need to create pokemon to pass into card fragment
             val pokemonImage = PokeImage(small = card.cardImage, large = card.cardImage)
-            val pokemon = Pokemon(id = card.id, name = card.cardName, images = pokemonImage)
+            val cardPrice = CardPrice(averageSellPrice = card.price)
+            val cardMarket = CardMarket(updatedAt = card.updatedAt, prices = cardPrice)
+            val pokemon = Pokemon(
+                id = card.id,
+                name = card.cardName,
+                images = pokemonImage,
+                cardmarket = cardMarket)
+
             val action =
                 PokemonListFragmentDirections.actionPokemonListFragmentToCardFragment(
                     pokemon = pokemon,

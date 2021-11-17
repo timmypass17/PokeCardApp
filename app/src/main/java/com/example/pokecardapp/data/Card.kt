@@ -8,5 +8,7 @@ import androidx.room.PrimaryKey
 data class Card(
     @PrimaryKey val id: String,
     @ColumnInfo(name = "name") val cardName: String,
-    @ColumnInfo(name = "image") val cardImage: String
+    @ColumnInfo(name = "image") val cardImage: String,
+    @ColumnInfo(name = "updatedAt") val updatedAt: String,
+    @ColumnInfo(name = "price") val price: String
 )

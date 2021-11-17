@@ -20,4 +20,6 @@ interface CardDao {
 
     @Query("SELECT EXISTS(SELECT * FROM cards WHERE id = :id)")
     fun isOwned(id: String): Boolean
+
+    // update pass
 }
