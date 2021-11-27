@@ -29,6 +29,9 @@ interface PokemonApiService  {
     // https://api.pokemontcg.io/v2/cards?q=set.id:mcd21
     @GET("cards")
     suspend fun getCardsFromSet(@Query("q") id: String): PokemonResponse
+
+    @GET("cards")
+    suspend fun getCardsWithName(@Query("q") name: String): PokemonResponse
 }
 
 /**

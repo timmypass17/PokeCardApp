@@ -17,8 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
+            android:padding="2dp"
             app:imageUrl="@{pokemon.images.small}"
-            app:srcCompat="@drawable/pokemon_card_sample"
-            android:padding="2dp"/>
+            app:srcCompat="@drawable/pokemon_card_sample" />
     </com.google.android.material.card.MaterialCardView>
 </layout>

@@ -20,16 +20,17 @@
         <ImageView
             android:id="@+id/ivCard"
             android:layout_width="0dp"
-            android:layout_height="400dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:adjustViewBounds="true"
             android:text="@string/hello_blank_fragment"
+            app:imageUrl="@{card.cardImage}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@drawable/pokemon_card_sample"
-            app:imageUrl="@{card.cardImage}"/>
+            tools:srcCompat="@drawable/pokemon_card_sample" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnAdd"

@@ -14,6 +14,7 @@ import com.example.pokecardapp.databinding.FragmentCardBinding
 import com.example.pokecardapp.viewmodels.CardViewModel
 import com.example.pokecardapp.viewmodels.CardViewModelFactory
 import kotlinx.android.synthetic.main.fragment_card.*
+import kotlinx.android.synthetic.main.fragment_pokemon_list.*
 
 class CardFragment : Fragment() {
 
@@ -48,13 +49,12 @@ class CardFragment : Fragment() {
             cardName = pokemon.name,
             cardImage = pokemon.images.large,
             updatedAt = pokemon.cardmarket.updatedAt,
-            price = pokemon.cardmarket.prices.averageSellPrice)
+            price = pokemon.cardmarket.prices.averageSellPrice?: "0.00")
 
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = viewModel
             binding.card = card
-
             btnAdd.setOnClickListener { addCard(card) }
             btnDelete.setOnClickListener { deleteCard(card) }
         }

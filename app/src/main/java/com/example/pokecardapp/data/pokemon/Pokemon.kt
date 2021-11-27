@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
 data class PokemonResponse(
@@ -15,7 +16,7 @@ data class Pokemon(
     val id: String,
     val name: String,
     val images: PokeImage,
-    val cardmarket: CardMarket
+    var cardmarket: CardMarket = CardMarket(updatedAt = "none", prices = CardPrice(averageSellPrice = "0.00"))
 ) : Parcelable
 
 @Parcelize
@@ -32,5 +33,6 @@ data class CardMarket(
 
 @Parcelize
 data class CardPrice(
-    val averageSellPrice: String
+    val averageSellPrice: String?
 ) : Parcelable
+

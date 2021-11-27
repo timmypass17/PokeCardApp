@@ -32,6 +32,7 @@ class PokemonSetAdapter(private val onItemClicked: (PokemonSet) -> Unit) :
 
         fun bind(pokemonSet: PokemonSet) {
             binding.pokemonSet = pokemonSet
+            binding.tvTotal.text = "0 / " + pokemonSet.total
             binding.executePendingBindings()
         }
     }

@@ -4,8 +4,11 @@ import androidx.lifecycle.*
 import com.example.pokecardapp.data.Card
 import com.example.pokecardapp.data.CardDao
 import com.example.pokecardapp.network.PokemonApi
+import com.example.pokecardapp.utilities.getFormattedPrice
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.launch
+import java.text.NumberFormat
 
 class CardViewModel(private val cardDao: CardDao) : ViewModel() {
 
@@ -15,6 +18,18 @@ class CardViewModel(private val cardDao: CardDao) : ViewModel() {
     private var _allCards: Flow<List<Card>> = cardDao.getCards()
     val allCards: LiveData<List<Card>> = _allCards.asLiveData()
 
+    private var _totalPrice: Flow<Double> = cardDao.getTotalPrice()
+//    val totalPrice: LiveData<Double> = _totalPrice.asLiveData()
+    val totalPrice: LiveData<String> = Transformations.map(_totalPrice.asLiveData()) { price -> getFormattedPrice(price) }
+
+    private var _totalCount: Flow<Int> = cardDao.getCardAmount()
+    val totalCount: LiveData<Int> =  _totalCount.asLiveData()
+
+    init {
+        // update room with new api data
+
+        // Use work manager?
+    }
 
     fun addCard(card: Card) {
         viewModelScope.launch {

@@ -42,10 +42,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:text="@{pokemonSet.name}"
-                app:layout_constraintBottom_toBottomOf="@+id/ivSymbol"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 app:layout_constraintStart_toEndOf="@+id/ivSymbol"
-                app:layout_constraintTop_toTopOf="@+id/ivSymbol"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="Base" />
 
             <ImageView
@@ -64,6 +65,14 @@
                 android:layout_height="1dp"
                 android:background="?android:attr/listDivider"
                 app:layout_constraintBottom_toBottomOf="parent" />
+
+            <TextView
+                android:id="@+id/tvTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/tvSetName"
+                app:layout_constraintTop_toBottomOf="@+id/tvSetName"
+                tools:text="0 / 10" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

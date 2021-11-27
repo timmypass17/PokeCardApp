@@ -1,5 +1,6 @@
 package com.example.pokecardapp.data
 
+import android.content.ClipData
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
@@ -15,11 +16,16 @@ interface CardDao {
     @Delete
     suspend fun delete(card: Card)
 
+    @Update
+    suspend fun update(card: Card)
+
     @Query("SELECT * from cards ORDER BY name ASC")
     fun getCards(): Flow<List<Card>>
 
-    @Query("SELECT EXISTS(SELECT * FROM cards WHERE id = :id)")
-    fun isOwned(id: String): Boolean
+    @Query("SELECT SUM(price) from cards")
+    fun getTotalPrice(): Flow<Double>
 
-    // update pass
+    @Query("SELECT COUNT(*) FROM cards")
+    fun getCardAmount(): Flow<Int>
+
 }

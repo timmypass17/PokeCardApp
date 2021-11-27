@@ -7,7 +7,8 @@ data class PokemonSetResponse(
 data class PokemonSet(
     val id: String,
     val name: String,
-    val images: PokeSetImage
+    val images: PokeSetImage,
+    val total: String
 )
 
 data class PokeSetImage (

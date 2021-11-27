@@ -5,4 +5,5 @@
     <string name="price">$%s</string>
     <string name="generic_name">Hello %s</string>
     <string name="updated_at">Updated: %s</string>
+    <string name="total_amount">Total Amount</string>
 </resources>

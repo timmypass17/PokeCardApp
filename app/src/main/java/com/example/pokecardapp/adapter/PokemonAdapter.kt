@@ -2,6 +2,7 @@ package com.example.pokecardapp.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -18,8 +19,14 @@ class PokemonAdapter(private val onItemClicked: (Pokemon) -> Unit) :
     override fun onBindViewHolder(holder: PokemonViewHolder, position: Int) {
         val pokemon = getItem(position)
         holder.itemView.setOnClickListener {
-            onItemClicked(pokemon)
+            onItemClicked(pokemon)  //
         }
+
+        holder.itemView.setOnLongClickListener {
+            Toast.makeText(holder.itemView.context, "$" + pokemon.cardmarket.prices.averageSellPrice, Toast.LENGTH_SHORT).show()
+            true
+        }
+
         holder.bind(pokemon)
     }
 
