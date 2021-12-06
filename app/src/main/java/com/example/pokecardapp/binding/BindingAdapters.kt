@@ -23,7 +23,8 @@ fun bindImage(imgView: ImageView, imgUrl: String?) {
         val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
         imgView.load(imgUri) {
             placeholder(R.drawable.ic_default_icon)
-            error(R.drawable.ic_no_wifi)
+            error(R.drawable.ic_default_icon)
+//            error(R.drawable.ic_no_wifi)
         }
     }
 }

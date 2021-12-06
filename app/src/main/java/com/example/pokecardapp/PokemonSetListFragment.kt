@@ -32,8 +32,8 @@ class PokemonSetListFragment : Fragment() {
         val adapter = PokemonSetAdapter { pokemonSet ->
             val action =
                 PokemonSetListFragmentDirections.actionPokemonSetListFragmentToPokemonSetDetailFragment(
-                    setId = pokemonSet.id,
-                    setName = pokemonSet.name
+                    pokemonSet,
+                    pokemonSet.name
                 )
             findNavController().navigate(action)
         }

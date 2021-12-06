@@ -14,6 +14,7 @@ import com.example.pokecardapp.viewmodels.PokemonViewModel
 
 class PokemonSetDetailFragment : Fragment() {
 
+    // TODO: Pass in whole set object and not just set.id and set.name to get banner image too
     private val navigationArgs: PokemonSetDetailFragmentArgs by navArgs()
     private val viewModel: PokemonViewModel by viewModels()
     private var _binding: FragmentPokemonSetDetailBinding? = null
@@ -38,11 +39,12 @@ class PokemonSetDetailFragment : Fragment() {
 
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
+        binding.pokemonSet = navigationArgs.set
         binding.rvCards.adapter = adapter
 
         // TODO: This kinda hackish?
         // we have to put this below adapter for some reason to add different data to viewmodel
-        viewModel.getCardsFromSet("set.id:${navigationArgs.setId}") // update with new card data
+        viewModel.getCardsFromSet("set.id:${navigationArgs.set.id}") // update with new card data
 
         return binding.root
     }

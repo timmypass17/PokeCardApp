@@ -8,7 +8,15 @@
         <variable
             name="viewModel"
             type="com.example.pokecardapp.viewmodels.PokemonViewModel" />
+
+        <variable
+            name="pokemonSet"
+            type="com.example.pokecardapp.data.pokeset.PokemonSet" />
     </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -25,19 +33,127 @@
             app:layout_constraintTop_toTopOf="parent"
             app:progressBarStatus="@{viewModel.status}" />
 
+        <ImageView
+            android:id="@+id/ivBanner"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_marginTop="24dp"
+            android:adjustViewBounds="true"
+            app:imageUrl="@{pokemonSet.images.logo}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@drawable/pokemon_symbol_test" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="wrap_content"
+            android:layout_height="75dp"
+            android:layout_marginTop="24dp"
+            android:background="@color/gray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivBanner" />
+
+        <View
+            android:id="@+id/divider4"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintTop_toTopOf="@+id/view"
+            tools:layout_editor_absoluteX="-16dp" />
+
+        <TextView
+            android:id="@+id/symbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Symbol"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/owned"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:imageUrl="@{pokemonSet.images.symbol}"
+            app:layout_constraintEnd_toEndOf="@+id/symbol"
+            app:layout_constraintStart_toStartOf="@+id/symbol"
+            app:layout_constraintTop_toBottomOf="@+id/symbol"
+            tools:srcCompat="@drawable/symbol_test" />
+
+        <TextView
+            android:id="@+id/owned"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Owned"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@+id/release"
+            app:layout_constraintStart_toEndOf="@+id/symbol"
+            app:layout_constraintTop_toTopOf="@+id/symbol" />
+
+        <TextView
+            android:id="@+id/tvOwned"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/owned"
+            app:layout_constraintStart_toStartOf="@+id/owned"
+            app:layout_constraintTop_toBottomOf="@+id/owned"
+            tools:text="0 / 202"
+            android:text="@{pokemonSet.total}"/>
+
+        <TextView
+            android:id="@+id/release"
+            android:layout_width="61dp"
+            android:layout_height="22dp"
+            android:text="Released"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/owned"
+            app:layout_constraintTop_toTopOf="@+id/owned" />
+
+        <TextView
+            android:id="@+id/tvReleaseDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2020/02/07"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/release"
+            app:layout_constraintStart_toStartOf="@+id/release"
+            app:layout_constraintTop_toBottomOf="@+id/release" />
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCards"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="6dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:clipToPadding="false"
+            android:padding="6dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view"
+            app:layout_constraintVertical_bias="0.0"
             app:setDetailListData="@{viewModel.pokemons}"
             app:spanCount="3"
             tools:listitem="@layout/item_pokemon" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 </layout>

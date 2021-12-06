@@ -45,16 +45,6 @@
                 tools:text="0"
                 android:text="@{viewModel.totalCount.toString()}"/>
 
-            <View
-                android:id="@+id/divider2"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="16dp"
-                android:background="?android:attr/listDivider"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvAmount" />
-
 
             <TextView
                 android:id="@+id/textView3"
@@ -79,6 +69,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView3"
                 tools:text="$0.00"
                 android:text="@{viewModel.totalPrice}"/>
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAmount" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvCards"
