@@ -1,14 +1,11 @@
 package com.example.pokecardapp.viewmodels
 
-import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokecardapp.data.pokemon.Pokemon
 import com.example.pokecardapp.data.pokeset.PokemonSet
-import com.example.pokecardapp.data.pokeset.PokemonSetResponse
 import com.example.pokecardapp.network.PokemonApi
 import kotlinx.coroutines.launch
 
@@ -47,5 +44,4 @@ class SetViewModel : ViewModel() {
             _status.value = PokemonApiStatus.ERROR
         }
     }
-
 }

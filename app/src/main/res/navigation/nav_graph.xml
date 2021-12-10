@@ -32,8 +32,8 @@
     <fragment
         android:id="@+id/pokemonSearchFragment"
         android:name="com.example.pokecardapp.PokemonSearchFragment"
-        android:label="fragment_pokemon_search"
-        tools:layout="@layout/fragment_pokemon_search" >
+        android:label="Search for a Card"
+        tools:layout="@layout/fragment_pokemon_search">
         <action
             android:id="@+id/action_pokemonSearchFragment_to_cardFragment"
             app:destination="@id/cardFragment" />
